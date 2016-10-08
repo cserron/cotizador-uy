@@ -1,21 +1,29 @@
 {
-    "name": "cotizaciones-uy",
-    "version": "0.0.1",
-    "description": "Cotizaciones del BROU",
-    "main": "server.js",
-
-    "dependencies": {
-        "request"   : "latest",
-        "cheerio"   : "latest",
-        "express"   : "latest"
-    },
-    
-    "author": {
-      "email": "christian@bros.me",
-      "name": "Chris Serron",
-      "url": "http://bros.me"  
-    },
-
-    "config" : { "port" : "80" },
+  "name": "cotizaciones-uy",
+  "version": "0.0.1",
+  "description": "Cotizaciones del BROU",
+  "main": "server.js",
+  "dependencies": {
+    "request": "latest",
+    "cheerio": "latest",
+    "express": "latest"
+  },
+  "author": "Chris Serron <christian@bros.me> (http://bros.me)",
+  "config": {
+    "port": "80"
+  },
+  "start": "node server.js",
+  "scripts": {
     "start": "node server.js"
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cserron/cotizador-uy.git"
+  },
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/cserron/cotizador-uy/issues"
+  },
+  "homepage": "https://github.com/cserron/cotizador-uy#readme"
 }
