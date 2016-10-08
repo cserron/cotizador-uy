@@ -10,7 +10,7 @@
   },
   "author": "Chris Serron <christian@bros.me> (http://bros.me)",
   "config": {
-    "port": "80"
+    "port": "8080"
   },
   "start": "node server.js",
   "scripts": {
