@@ -1,7 +1,7 @@
 cotizador-uy
 ===============
 Currency exchange tables for the Uruguayan market implemented as a RESTful API in NodeJs.
-Inspired by the great job done by these guys: http://brou-currencies.herokuapp.com
+Demo: https://broucurrencies.herokuapp.com/brou/
 
 The response will be a json with the following structured:
 ```
