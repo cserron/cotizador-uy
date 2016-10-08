@@ -12,17 +12,19 @@ The response will be a json with the following structured:
 ```
 The  BROU currencies are:
 
-| /brou/dolar   | Dolar Estadounidense
-| /brou/dbrou   | Dolar e-Brou
-| /brou/arg     | Peso Argentino
-| /brou/real    | Real
-| /brou/euro    | Euro
-| /brou/libra   | Libra Esterlina
-| /brou/franco  | Fraco Suizo
-| /brou/yxd     | Yens por Dolar Estadouniden
-| /brou/idj     | Indice Dow Jones
-| /brou/ui      | Unidades Indexadas
-| /brou/otdo    | Onza Troy de Oro
+| Resource | Currency |
+| --------------|----------|
+| /brou/dolar   | Dolar Estadounidense |
+| /brou/dbrou   | Dolar e-Brou |
+| /brou/arg     | Peso Argentino |
+| /brou/real    | Real |
+| /brou/euro    | Euro |
+| /brou/libra   | Libra Esterlina |
+| /brou/franco  | Fraco Suizo |
+| /brou/yxd     | Yens por Dolar Estadouniden |
+| /brou/idj     | Indice Dow Jones |
+| /brou/ui      | Unidades Indexadas |
+| /brou/otdo    | Onza Troy de Oro |
 
 
 
