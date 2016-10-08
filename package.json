@@ -14,5 +14,8 @@
       "email": "christian@bros.me",
       "name": "Chris Serron",
       "url": "http://bros.me"  
-    }
+    },
+
+    "config" : { "port" : "80" },
+    "start": "node server.js"
 }
