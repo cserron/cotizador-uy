@@ -17,20 +17,20 @@ module.exports = (function () {
     let request = require('request');
     let cheerio = require('cheerio');
 
-    let url = 'http://brou.com.uy/c/portal/render_portlet?p_l_id=123137&p_p_id=ExchangeLarge_WAR_ExchangeRate5121_INSTANCE_P2Af';
+    let url = 'https://www.portal.brou.com.uy/cotizaciones';
 
     let currencyType = {
         'dolar': [0, 1],        // Dolar Estadounidense
-        'dbrou': [2, 3],        // Dolar e-Brou
-        'arg': [4, 5],          // Peso Argentino
-        'real': [8, 9],         // Real
-        'euro': [12, 13],       // Euro
-        'libra': [16, 17],      // Libra Esterlina
-        'franco': [20,21],      // Fraco Suizo
-        'yxd': [24, 25],        // Yens por Dolar Estadounidense
-        'idj': [36,37],         // Indice Dow Jones
-        'ui': [32, 33],         // Unidades Indexadas
-        'otdo': [38,39]         // Onza Troy de Oro
+        'dbrou': [4, 5],        // Dolar e-Brou
+        'arg': [12, 13],          // Peso Argentino
+        'real': [16, 17],         // Real
+        'euro': [8, 9],       // Euro
+        'libra': [20, 21],      // Libra Esterlina
+        'franco': [24,25],      // Fraco Suizo
+        'yxd': [28, 29],        // Yens por Dolar Estadounidense
+        'idj': [37,37],         // Indice Dow Jones
+        'ui': [36, 36],         // Unidades Indexadas
+        'otdo': [38,38]         // Onza Troy de Oro
     };
 
     let currencies = new Promise(
@@ -40,10 +40,11 @@ module.exports = (function () {
                 if (!error && response.statusCode == 200) {
                     let currencies = [];
                     let parsedHTML = cheerio.load(html, { normalizeWhitespace: true });
-
-                    parsedHTML('.sale, .buy').each(function (i, elem) {
+                    parsedHTML('.valor').each(function (i, elem) {
                         let cur = parsedHTML(this).text().trim();
-
+                        let parseCur = cur.replace('.','');
+                        cur = parseCur.replace(',','.');
+                        
                         if (cur && !isNaN(cur)) {
                             currencies.push(cur);
                         }
@@ -60,9 +61,13 @@ module.exports = (function () {
 
 
     function currencyFormat(curArr, buy, sale) {
-        return { 'buy': curArr[buy], 'sale': curArr[sale] };
+        let buyValue = "-";
+        if (buy !== sale) {
+            buyValue = curArr[buy];
+        }
+        return { 'buy': buyValue, 'sale': curArr[sale] };
     }
-
+    
     router.get('/', function (req, res) {
         currencies.then(res.send.bind(res));
     });
