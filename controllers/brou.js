@@ -32,7 +32,6 @@ module.exports = (function () {
         'idj': [37,37],         // Indice Dow Jones
         'ui': [36, 36],         // Unidades Indexadas
         'otdo': [38,38]         // Onza Troy de Oro
-  
     };
 
     let currencies = new Promise(
