@@ -16,8 +16,9 @@ module.exports = (function () {
     let router = require('express').Router();
     let request = require('request');
     let cheerio = require('cheerio');
-
-    let url = 'https://www.portal.brou.com.uy/cotizaciones';
+    
+    // let url = 'https://www.brou.com.uy/cotizaciones';
+    let url = 'https://www.brou.com.uy/c/portal/render_portlet?p_l_id=20593&p_p_id=cotizacionfull_WAR_broutmfportlet_INSTANCE_otHfewh1klyS&p_p_lifecycle=0&p_t_lifecycle=0&p_p_state=normal&p_p_mode=view&p_p_col_id=column-1&p_p_col_pos=0&p_p_col_count=2&p_p_isolated=1&currentURL=%2Fcotizaciones';
 
     let currencyType = {
         'dolar': [0, 1],        // Dolar Estadounidense
@@ -31,17 +32,20 @@ module.exports = (function () {
         'idj': [37,37],         // Indice Dow Jones
         'ui': [36, 36],         // Unidades Indexadas
         'otdo': [38,38]         // Onza Troy de Oro
+  
     };
 
     let currencies = new Promise(
 
         function (resolve, reject) {
             request(url, function (error, response, html) {
+                
                 if (!error && response.statusCode == 200) {
                     let currencies = [];
-                    let parsedHTML = cheerio.load(html, { normalizeWhitespace: true });
+                    let parsedHTML = cheerio.load(html, { normalizeWhitespace: true });            
                     parsedHTML('.valor').each(function (i, elem) {
                         let cur = parsedHTML(this).text().trim();
+                        
                         let parseCur = cur.replace('.','');
                         cur = parseCur.replace(',','.');
                         
